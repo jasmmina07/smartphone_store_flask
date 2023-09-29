@@ -17,7 +17,8 @@ def get_all_smartphones():
 @app.route('/smartphones/brands', methods=['GET'])
 def get_all_brands():
     """Returns all brands in the database"""
-    pass
+    text=["Apple","Redmi","Nokia","Huawei","Vivo","Samsung","Oppo"]
+    return text
 
 
 # view all smartphones by brand
