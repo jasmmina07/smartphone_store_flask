@@ -17,7 +17,7 @@ class SmartphoneDB:
     
     def get_smartphone_by_brand(self, brand):
         """Returns all products by brand"""
-        pass
+        return self.db.table(brand).all()
     
     def get_smartphone_by_name(self, name):
         """Returns a product by name"""
