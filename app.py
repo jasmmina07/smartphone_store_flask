@@ -29,10 +29,10 @@ def get_smartphone_by_brand(brand):
 
 
 # view smartphone by name
-@app.route('/smartphones/name/<name>', methods=['GET'])
-def get_smartphone_by_name(name):
+@app.route('/smartphones/name/<brand>/<name>', methods=['GET'])
+def get_smartphone_by_name(brand,name):
     """Returns a product by name"""
-    pass
+    return jsonify(db.get_smartphone_by_name(brand,name))
 
 
 # view smartphone by price
