@@ -1,4 +1,5 @@
 from tinydb import TinyDB, Query
+from flask import  jsonify
 
 
 class SmartphoneDB:
@@ -8,7 +9,11 @@ class SmartphoneDB:
     
     def brands(self):
         """Returns all brands in the database"""
-        pass
+        a=[]
+        b=["Apple","Huawei","Oppo","Samsung","Nokia","Vivo","Redmi"]
+        for i in b:
+            a.append(self.db.table(i).all())
+        return a
     
     def get_smartphone_by_brand(self, brand):
         """Returns all products by brand"""
@@ -29,4 +34,7 @@ class SmartphoneDB:
     def delete_smartphone(self, doc_id, brand):
         """Deletes a product from the database"""
         pass
+db=SmartphoneDB("db.json")
     
+if __name__=="__db.py__":
+    print(db.brands())
