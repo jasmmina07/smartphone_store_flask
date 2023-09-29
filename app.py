@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from db import SmartphoneDB
-
+db=SmartphoneDB("db.json")
 
 app = Flask(__name__)
 db = SmartphoneDB('db.json')
@@ -10,7 +10,7 @@ db = SmartphoneDB('db.json')
 @app.route('/smartphones', methods=['GET'])
 def get_all_smartphones():
     """Returns all smartphones in the database"""
-    pass
+    return jsonify(db.brands())
 
 
 # view all brands
