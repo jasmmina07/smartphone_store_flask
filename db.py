@@ -12,16 +12,17 @@ class SmartphoneDB:
         a=[]
         b=["Apple","Huawei","Oppo","Samsung","Nokia","Vivo","Redmi"]
         for i in b:
-            a.append(self.db.table(i).all())
+            a+=self.db.table(i).all()
         return a
     
     def get_smartphone_by_brand(self, brand):
         """Returns all products by brand"""
         return self.db.table(brand).all()
     
-    def get_smartphone_by_name(self, name):
+    def get_smartphone_by_name(self,brand,name):
         """Returns a product by name"""
-        pass
+        data=self.db.table(brand)
+        return data.search(self.query.name==name)
 
     def get_smartphone_by_price(self, price):
         """Returns a product by price"""
