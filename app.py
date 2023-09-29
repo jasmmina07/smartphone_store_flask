@@ -25,7 +25,7 @@ def get_all_brands():
 @app.route('/smartphones/<brand>', methods=['GET'])
 def get_smartphone_by_brand(brand):
     """Returns all products by brand"""
-    pass
+    return jsonify(db.get_smartphone_by_brand(brand))
 
 
 # view smartphone by name
