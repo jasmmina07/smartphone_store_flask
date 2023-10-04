@@ -5,6 +5,10 @@ db=SmartphoneDB("db.json")
 app = Flask(__name__)
 db = SmartphoneDB('db.json')
 
+@app.route('/')
+def start():
+    return 'Hello'
+
 
 ## view all smartphone
 @app.route('/smartphones', methods=['GET'])
@@ -36,11 +40,10 @@ def get_smartphone_by_name(brand,name):
 
 
 # view smartphone by price
-@app.route('/smartphones/price/<price>', methods=['GET'])
-def get_smartphone_by_price(price):
+@app.route('/smartphones/price/<brand>/<price>', methods=['GET'])
+def get_smartphone_by_price(price,brand):
     """Returns a product by price"""
-    pass
-
+    return db.get_smartphone_by_price(price,brand)
 
 # view add smartphone
 @app.route('/smartphone/add', methods=['POST'])
@@ -50,10 +53,11 @@ def add_smartphone():
 
 
 # view delete smartphone
-@app.route('/smartphone/delete/<doc_id>', methods=['DELETE'])
-def delete_smartphone(doc_id):
+@app.route('/smartphone/delete/<brand>/<doc_id>') # methods=['DELETE'])
+def delete_smartphone(doc_id,brand):
     """Deletes a product from the database"""
-    pass
+    db.delete_smartphone(doc_id,brand)
+    return "removed"
 
 
 if __name__ == '__main__':

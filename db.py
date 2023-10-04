@@ -24,9 +24,12 @@ class SmartphoneDB:
         data=self.db.table(brand)
         return data.search(self.query.name==name)
 
-    def get_smartphone_by_price(self, price):
+    def get_smartphone_by_price(self, price,brand):
         """Returns a product by price"""
-        pass
+        # data=self.db.tables(['Apple','Nokia']).search(self.query.price==int(price))
+        data=self.db.table(brand)
+        return data.search(self.query.price==price)
+        
     
     def add_smartphone(self, smartphone, brand):
         """Adds a product to the database"""
@@ -34,7 +37,7 @@ class SmartphoneDB:
     
     def delete_smartphone(self, doc_id, brand):
         """Deletes a product from the database"""
-        pass
+        self.db.table(brand).remove(doc_ids=[int(doc_id)])
 db=SmartphoneDB("db.json")
     
 if __name__=="__db.py__":
